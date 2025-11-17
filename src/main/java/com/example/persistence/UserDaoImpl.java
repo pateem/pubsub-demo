@@ -1,4 +1,3 @@
-// java
 package com.example.persistence;
 
 import java.sql.Connection;

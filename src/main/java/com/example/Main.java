@@ -16,11 +16,11 @@ public class Main {
     UserDaoImpl userDao = new UserDaoImpl(new H2ConnectionProvider());
     UserCommandFactory userCommandFactory = new UserCommandFactory(userDao);
 
-    CommandBroker commandBroker = new InMemoryCommandBroker();
     CommandSubscriber subscriber = new CommandSubscriber();
+    CommandBroker commandBroker = new InMemoryCommandBroker();
     commandBroker.subscribe(subscriber);
-    CommandPublisher publisher = new CommandPublisher(commandBroker);
 
+    CommandPublisher publisher = new CommandPublisher(commandBroker);
     publisher.publish(userCommandFactory.add(1L, "a1", "Robert"));
     publisher.publish(userCommandFactory.add(2L, "a2", "Martin"));
     publisher.publish(userCommandFactory.printAll());
