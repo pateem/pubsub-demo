@@ -6,11 +6,11 @@ import org.apache.logging.log4j.Logger;
 
 public class CommandSubscriber {
 
-    private final Logger logger = LogManager.getLogger(CommandSubscriber.class);
+  private final Logger logger = LogManager.getLogger(CommandSubscriber.class);
 
-    void onCommand(Command command) {
-        logger.info("Executing command: {}", command.getClass().getSimpleName());
-        command.execute();
-    }
+  void onCommand(Command command) {
+    logger.info("Executing command: {}", command.getClass().getSimpleName());
+    command.execute();
+  }
 
 }

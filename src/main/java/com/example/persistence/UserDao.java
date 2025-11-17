@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface UserDao {
 
-    List<User> findAll();
+  List<User> findAll();
 
-    void save(User user);
+  void save(User user);
 
-    void deleteAll();
+  void deleteAll();
 
 }

@@ -10,20 +10,21 @@ import com.example.persistence.H2ConnectionProvider;
 import com.example.persistence.UserDaoImpl;
 
 public class Main {
-    public static void main(String[] args) {
 
-        UserDaoImpl userDao = new UserDaoImpl(new H2ConnectionProvider());
-        UserCommandFactory userCommandFactory = new UserCommandFactory(userDao);
+  public static void main(String[] args) {
 
-        CommandBroker commandBroker = new InMemoryCommandBroker();
-        CommandSubscriber subscriber = new CommandSubscriber();
-        commandBroker.subscribe(subscriber);
-        CommandPublisher publisher = new CommandPublisher(commandBroker);
+    UserDaoImpl userDao = new UserDaoImpl(new H2ConnectionProvider());
+    UserCommandFactory userCommandFactory = new UserCommandFactory(userDao);
 
-        publisher.publish(userCommandFactory.add(1L, "a1", "Robert"));
-        publisher.publish(userCommandFactory.add(2L, "a2", "Martin"));
-        publisher.publish(userCommandFactory.printAll());
-        publisher.publish(userCommandFactory.deleteAll());
-        publisher.publish(userCommandFactory.printAll());
-    }
+    CommandBroker commandBroker = new InMemoryCommandBroker();
+    CommandSubscriber subscriber = new CommandSubscriber();
+    commandBroker.subscribe(subscriber);
+    CommandPublisher publisher = new CommandPublisher(commandBroker);
+
+    publisher.publish(userCommandFactory.add(1L, "a1", "Robert"));
+    publisher.publish(userCommandFactory.add(2L, "a2", "Martin"));
+    publisher.publish(userCommandFactory.printAll());
+    publisher.publish(userCommandFactory.deleteAll());
+    publisher.publish(userCommandFactory.printAll());
+  }
 }

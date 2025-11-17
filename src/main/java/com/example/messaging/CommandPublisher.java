@@ -6,17 +6,17 @@ import org.apache.logging.log4j.Logger;
 
 public class CommandPublisher {
 
-    private final Logger logger = LogManager.getLogger(CommandPublisher.class);
+  private final Logger logger = LogManager.getLogger(CommandPublisher.class);
 
-    private final CommandBroker broker;
+  private final CommandBroker broker;
 
-    public CommandPublisher(CommandBroker broker) {
-        this.broker = broker;
-    }
+  public CommandPublisher(CommandBroker broker) {
+    this.broker = broker;
+  }
 
-    public void publish(Command command) {
-        logger.info("Publishing command: {}", command.getClass().getSimpleName());
-        broker.publish(command);
-    }
+  public void publish(Command command) {
+    logger.info("Publishing command: {}", command.getClass().getSimpleName());
+    broker.publish(command);
+  }
 
 }
